@@ -12,12 +12,14 @@
       ],
       "key": {
         "#": {
-          "item": "minecraft:blue_dye"
+          "item": "minecraft:dye",
+          "data": 4
         }
       },
     "unlock": [
         {
-          "item": "minecraft:blue_dye"
+          "item": "minecraft:dye",
+          "data": 4
         }
       ],
       "result": {

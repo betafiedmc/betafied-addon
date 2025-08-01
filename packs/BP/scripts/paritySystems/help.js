@@ -20,11 +20,19 @@ const HELP_ENTRIES = [
   },
   {
     command: "/tag @s add afkradius_enabled",
-    description: "Enable idle-based radius expansion (used in Nether scanner)."
+    description: "Enable idle-based radius expansion. (used in Nether)"
   },
   {
     command: "/tag @s remove afkradius_enabled",
     description: "Disable idle-based radius expansion."
+  },
+    {
+    command: "/tag username add voided",
+    description: "Effectively soft-ban a player."
+  },
+  {
+    command: "/tag username remove afkradius_enabled",
+    description: "Remove soft-ban from player."
   },
   {
     command: "!help",
@@ -37,7 +45,7 @@ world.beforeEvents.chatSend.subscribe(event => {
   const { sender, message } = event;
 
   if (message.trim().toLowerCase() === "!help") {
-    sender.sendMessage("§eAvailable Tags & Commands:");
+    sender.sendMessage("§eAvailable Tags/Commands:");
     for (const entry of HELP_ENTRIES) {
       sender.sendMessage(`§b${entry.command} §7- ${entry.description}`);
     }

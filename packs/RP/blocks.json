@@ -1970,7 +1970,7 @@
     "end_stone": {
         "isotropic": false,
         "sound": "stone",
-        "textures": "end_stone"
+        "textures": "dirt"
     },
     "ender_chest": {
         "textures": {
@@ -4907,6 +4907,7 @@
     },
     "trapped_chest": {
         "isotropic": false,
+        "blockshape": "command_block",
         "sound": "wood",
         "textures": {
             "down": "chest_inventory_top",

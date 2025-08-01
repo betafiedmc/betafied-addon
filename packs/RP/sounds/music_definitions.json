@@ -9,6 +9,12 @@
         "max_delay": 180,
         "min_delay": 60
     },
+    {
+  "sou": {
+    "event_name" : "music.game.sou",
+    "min_delay": 60,
+    "max_delay": 180
+  },
     "basalt_deltas": {
         "event_name": "music.game.basalt_deltas",
         "max_delay": 180,
@@ -75,12 +81,12 @@
         "min_delay": 60
     },
     "end": {
-        "event_name": "music.game.end",
+        "event_name": "music.game.sou",
         "max_delay": 180,
         "min_delay": 60
     },
     "endboss": {
-        "event_name": "music.game.endboss",
+        "event_name": "music.game.sou",
         "max_delay": 180,
         "min_delay": 60
     },

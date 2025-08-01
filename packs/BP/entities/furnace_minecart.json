@@ -1,0 +1,113 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "custom:furnace_minecart",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+
+    "component_groups": {
+      "furnace_cart:burning": {
+        "minecraft:rail_movement": {
+          "max_speed": 0.4
+        },
+        "minecraft:particle_effects": {
+          "effects": [
+            {
+              "particle": "minecraft:smoke",
+              "effect_position": "body"
+            }
+          ]
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:type_family": {
+        "family": ["minecart", "furnace_cart"]
+      },
+      "minecraft:collision_box": {
+        "width": 0.98,
+        "height": 0.7
+      },
+      "minecraft:rail_movement": {},
+
+      "minecraft:physics": {},
+      "minecraft:rideable": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "event": "furnace_cart:fuel"
+            },
+            "use_item": true,
+            "filters": {
+              "all_of": [
+                { "test": "has_equipment", "subject": "player", "domain": "hand", "value": "minecraft:coal" }
+              ]
+            }
+          },
+          {
+            "on_interact": {
+              "event": "furnace_cart:fuel"
+            },
+            "use_item": true,
+            "filters": {
+              "all_of": [
+                { "test": "has_equipment", "subject": "player", "domain": "hand", "value": "minecraft:charcoal" }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:timers": {
+        "timers": [
+          {
+            "name": "burn_time",
+            "looping": false,
+            "time": 300,
+            "on_expire": {
+              "event": "furnace_cart:burnout"
+            }
+          }
+        ]
+      }
+    },
+
+    "events": {
+      "minecraft:entity_spawned": {
+        "remove": {
+          "component_groups": ["furnace_cart:burning"]
+        }
+      },
+
+      "furnace_cart:fuel": {
+        "add": {
+          "component_groups": ["furnace_cart:burning"]
+        },
+        "run_command": {
+          "command": "say §7Furnace cart fueled!"
+        },
+        "set_timer": {
+          "name": "burn_time",
+          "time": 300
+        }
+      },
+
+      "furnace_cart:burnout": {
+        "remove": {
+          "component_groups": ["furnace_cart:burning"]
+        },
+        "run_command": {
+          "command": "say §8Furnace cart ran out of fuel."
+        }
+      }
+    }
+  }
+}

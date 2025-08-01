@@ -21,7 +21,8 @@
       }
     ],
     "result": {
-      "item": "minecraft:blue_dye",
+      "item": "minecraft:dye",
+      "data": 4,
       "count": 9
     }
   }

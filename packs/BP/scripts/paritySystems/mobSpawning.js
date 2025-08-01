@@ -9,6 +9,7 @@ const ALLOWED_MOBS = new Set([
     "minecraft:minecart",
     "minecraft:chest_minecart",
     "minecraft:painting",
+    "custom:furnace_minecart",
     "minecraft:boat",
     "minecraft:falling_block",
     "minecraft:arrow",

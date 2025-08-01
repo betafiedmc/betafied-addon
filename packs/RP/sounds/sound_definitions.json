@@ -2943,6 +2943,17 @@
                 }
             ]
         },
+            "music.game.sou": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/music/game/other/copy",
+          "stream": true,
+          "volume": 0.15,
+          "load_on_low_memory": true
+        }
+      ]
+    },
         "music.game.soulsand_valley": {
             "category": "music",
             "max_distance": null,
