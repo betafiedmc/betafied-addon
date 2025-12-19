@@ -1,0 +1,31 @@
+# compiled packages
+*.mcaddon
+*.mcpack
+
+# python cache
+__pycache__/
+*.py[cod]
+*.pyc
+
+# scripts
+*.py
+fix_textures.py
+check_missing.py
+package_addon.py
+create_food_overrides.py
+
+# editor files
+*.txt
+*.md
+.vscode/
+
+# os files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# temp
+*.tmp
+*.temp
+*.bak
+*.log
