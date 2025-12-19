@@ -8,9 +8,11 @@ __pycache__/
 *.pyc
 
 # scripts
+*.py
 fix_textures.py
 check_missing.py
 package_addon.py
+create_food_overrides.py
 
 # editor files
 *.txt
