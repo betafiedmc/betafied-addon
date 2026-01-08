@@ -1,0 +1,262 @@
+{
+  "namespace": "bfui-pause_screen",
+  "root_panel": {
+    "type": "panel",
+    "controls": [
+      { "main_element@bfui-pause_screen.main_element": {}},
+      { "saving_world_element@bfui-pause_screen.saving_world_element": {}},
+      { "pocketui_warning@bfui-pause_screen.pocketui_warning": {}}
+  ]},
+  "saving_world_element": {
+    "type": "label",
+    "text": "§7Saving World...",
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [ 8, -8 ],
+    "alpha": 0.5,
+    "anims": [
+      "@bfui-pause_screen.saving_world_anim_01"
+    ]
+  },
+  "pocketui_warning": {
+    "ignored": "(not $pocket_screen)",
+    "type": "label",
+    "text": "'Pocket' UI are currently not supported at the moment, Bugs will occur.\nTo ensure a better UI experience, Please select 'Classic' instead.\n\n§7Options... > Video > \"UI Profile\" > Select 'Classic'",
+    "anchor_to": "bottom_middle",
+    "anchor_from": "bottom_middle",
+    "offset": [ 0, -20 ],
+    "alpha": 0.5
+  },
+  "saving_world_anim_01": {
+    "anim_type": "alpha",
+    "easing": "out_quart",
+    "duration": 0.5,
+    "from": 0,
+    "to": 1,
+    "next": "@bfui-pause_screen.saving_world_anim_02"
+  },
+  "saving_world_anim_02": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.5,
+    "from": 1,
+    "to": 0,
+    "next": "@bfui-pause_screen.saving_world_anim_03"
+  },
+  "saving_world_anim_03": {
+    "anim_type": "alpha",
+    "easing": "out_quart",
+    "duration": 0.5,
+    "from": 0,
+    "to": 1,
+    "next": "@bfui-pause_screen.saving_world_anim_04"
+  },
+ "saving_world_anim_04": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.5,
+    "from": 1,
+    "to": 0,
+    "next": "@bfui-pause_screen.saving_world_anim_05"
+  },
+  "saving_world_anim_05": {
+    "anim_type": "alpha",
+    "easing": "out_quart",
+    "duration": 0.5,
+    "from": 0,
+    "to": 1,
+    "next": "@bfui-pause_screen.saving_world_anim_06"
+  },
+  "saving_world_anim_06": {
+    "anim_type": "alpha",
+    "easing": "in_quart",
+    "duration": 0.5,
+    "from": 1,
+    "to": 0
+  },
+  "screen_background": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "alpha": 0.7
+  },
+  "main_element": {
+    "type": "panel",
+    "focus_container": true,
+    "use_last_focus": true,
+    "controls": [
+      { "pause_menu_label@pause_menu_label": {}},
+      { "button_panel": {
+          "type": "stack_panel",
+          "size": [ 200, "100%c" ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 75 ],
+          "use_child_anchors": true,
+          "controls": [
+            { "return_to_game_button@bfui-pause_screen.button_template": {
+                "$pressed_button_name": "button.menu_continue",
+                "$button_text": "Back to game",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle",
+                "$button_focus_precedence": 1,
+                "focus_identifier": "return_to_game",
+                "$focus_override_up": "icon_panel_main_focus",
+                "focus_change_right": "friendsdrawer_button",
+                "focus_change_left": "FOCUS_OVERRIDE_STOP",
+                "variables": [
+                  { "requires": "$is_editor_playtest_roundtrip",
+                    "$button_text": "pauseScreen.editor.returnToTesting"
+                  },
+                  { "requires": "$is_editor_mode_enabled",
+                    "$button_text": "pauseScreen.editor.returnToEditing"
+                }]
+            }},
+            { "vertical_padding_00": { "type": "panel", "size": [ 0, 4 ] }},
+            { "sub_button_00": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ 200, 20 ],
+                "controls": [
+                  { "dressing_room_button_own@bfui-pause_screen.button_template": {
+                      "size": [ 98, 20 ],
+                      "$pressed_button_name": "button.to_profile_or_skins_screen",
+                      "$button_text": "profileScreen.header",
+                      "$focus_id": "profile_button"
+                  }},
+                  { "padding": {
+                      "type": "panel",
+                      "size": [ 4, 4 ]
+                  }},
+                  { "more_player@bfui-pause_screen.button_template": {
+                      "size": [ 98, 20 ],
+                      "$pressed_button_name": "button.friends_drawer",
+                      "$button_text": "Player(s)",
+                      "$focus_id": "profile_button",
+                      "property_bag": {
+                        "#context": "ingame"
+                      }
+                  }}
+            ]}},
+            { "large_padding": { "type": "panel", "size": [ "100%", 30 ]}},
+            { "settings_button@bfui-pause_screen.button_template": {
+                "$pressed_button_name": "button.menu_settings",
+                "$button_text": "Options...",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle"
+            }},
+            { "vertical_padding_01": { "type": "panel", "size": [ 0, 4 ] }},
+            { "quit_button@bfui-pause_screen.button_template": {
+                "$pressed_button_name": "button.menu_quit",
+                "$button_text": "Save and quit to title",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle",
+                "$focus_override_down": "icon_panel_main_focus",
+                "variables": [
+                  { "requires": "($is_secondary_client and not $is_editor_playtest_roundtrip)",
+                    "$button_text": "pauseScreen.secondaryClientLeave"
+                  },
+                  { "requires": "$is_editor_playtest_roundtrip",
+                    "$button_text": "pauseScreen.editor.quit"
+                }]
+            }},
+            { "vertical_padding_01": { "type": "panel", "size": [ 0, 20 ] }}
+          ]
+        }
+      }
+    ]
+  },
+  "more_player_toggle@common_toggles.light_ui_toggle": {
+    "$template_toggle": "pause.dark_template_toggle",
+    "size": [ 98, 20 ],
+    "$button_text": "Player(s)",
+    "$toggle_name": "pause_more_player",
+    "$toggle_view_binding_name": "pause_more_player",
+    "$button_mappings": [
+      { "from_button_id": "button.controller_start",
+        "to_button_id": "button.controller_start",
+        "mapping_type": "global"
+      },
+      { "from_button_id": "button.scoreboard",
+        "to_button_id": "button.scoreboard",
+        "mapping_type": "global"
+      },
+      { "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      { "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+  }]},
+  "pause_menu_label": {
+    "type": "panel",
+    "size": [ "100%", 12 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ 0, 30 ],
+    "controls": [
+      { "paused_label_without": {
+          "type": "label",
+          "text_alignment": "center",
+          "text": "Game menu",
+          "shadow": true,
+          "bindings": [
+            { "binding_name": "(not #pause_annoucement_visible)",
+              "binding_name_override": "#visible",
+              "binding_type": "global"
+          }]
+      }},
+      { "paused_label_with": {
+          "type": "label",
+          "text_alignment": "center",
+          "text": "Game menu §7§o(Paused)",
+          "shadow": true,
+          "bindings": [
+            { "binding_name": "#pause_annoucement_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global"
+          }]
+      }}
+  ]},
+  "button_template@common_buttons.light_text_button": {
+    "$button_type_panel": "bfui-pause_screen.new_ui_binding_button_label_classic",
+    "$default_button_texture": "textures/ui/vanilla_default",
+    "$default_text_color": "$light_button_hover_text_color",
+    "$hover_button_texture": "textures/ui/vanilla_pressed",
+    "$hover_text_color": [ 1, 0.9607, 0.8117 ],
+    "$pressed_button_texture": "textures/ui/vanilla_pressed",
+    "$pressed_text_color": [ 1, 0.9607, 0.8117 ],
+    "$locked_button_texture": "textures/ui/vanilla_locked",
+    "$locked_text_color": "$light_button_hover_text_color",
+    "size": [ 200, 20 ],
+    "$button_image_size": [ "100%", "100%" ],
+    "$border_visible": false,
+    "$border_alpha": 0,
+    "$button_pressed_offset": [ 0, 0 ],
+    "focus_identifier": "$pressed_button_name",
+    "focus_change_right": "$focus_override_right",
+    "focus_change_left": "$pressed_button_name"
+  },
+  "dark_template_toggle@common_toggles.light_template_toggle": {
+    "$button_type_panel": "bfui-pause_screen.new_ui_binding_button_label_classic",
+    "$button_text_binding_type|default": "none",
+    "$button_text_grid_collection_name|default": "",
+    "$button_binding_condition|default": "none",
+    "$default_texture": "textures/ui/vanilla_default",
+    "$hover_texture": "textures/ui/vanilla_default",
+    "$pressed_texture": "textures/ui/vanilla_pressed",
+    "$pressed_no_hover_texture": "textures/ui/vanilla_pressed",
+    "$border_alpha": 0,
+    "$button_image_size": [ "100%", "100%" ],
+    "$button_offset": [ 0, 0 ],
+    "$default_text_color": "$light_button_hover_text_color",
+    "$hover_text_color": [ 1, 0.9607, 0.8117 ],
+    "$default_checked_text_color": "$light_button_hover_text_color",
+    "$hover_checked_text_color": [ 1, 0.9607, 0.8117 ],
+    "$default_border_visible": false,
+    "$hover_border_visible": false
+  },
+  "new_ui_binding_button_label_classic@common_buttons.new_ui_binding_button_label": {
+    "shadow": true
+  }
+}
